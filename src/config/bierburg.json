@@ -1,0 +1,26 @@
+{
+  "returns": 2,
+  "products": [
+    {
+      "key": "p5",
+      "name": "Pils 0.5",
+      "value": {
+        "default": 2.5
+      }
+    },
+    {
+      "key": "p3",
+      "name": "Pils 0.3",
+      "value": {
+        "default": 1.5
+      }
+    },
+    {
+      "key": "w5",
+      "name": "Weizen 0.5",
+      "value": {
+        "default": 2.5
+      }
+    }
+  ]
+}

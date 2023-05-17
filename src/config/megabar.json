@@ -1,0 +1,19 @@
+{
+  "returns": 2,
+  "products": [
+    {
+      "key": "vw",
+      "name": "Vodka W",
+      "value": {
+        "default": 7
+      }
+    },
+    {
+      "key": "gt",
+      "name": "Gin T",
+      "value": {
+        "default": 7
+      }
+    }
+  ]
+}

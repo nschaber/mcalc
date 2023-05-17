@@ -1,0 +1,31 @@
+import {Fragment, ReactElement} from "react";
+import {Box, Card, CardActionArea, CardContent, Grid} from "@mui/material";
+
+interface IProps {
+    children: Array<ReactElement> | ReactElement;
+    size: number;
+    handleClick: () => void;
+    color?: string | undefined;
+}
+
+const Panel = ({children, size, handleClick, color}: IProps) => {
+
+    return (
+        <Fragment>
+            <Grid item xs={size}>
+                <Card elevation={3} sx={ color ? { backgroundColor: color} : {}}>
+                    <CardActionArea>
+                        <CardContent onClick={handleClick}>
+                            <Box textAlign={"center"} justifyContent={"center"} sx={{marginBottom: "5px", minHeight: "50px"}}>
+                                {children}
+                            </Box>
+                        </CardContent>
+                    </CardActionArea>
+                </Card>
+            </Grid>
+        </Fragment>
+    )
+
+}
+
+export default Panel;

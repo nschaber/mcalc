@@ -23,7 +23,7 @@ const Calculator = () => {
     return (
         <Fragment>
             <Grid container spacing={0} padding={0} justifyContent={"center"}>
-                <Grid container spacing={1} padding={1} md={6}>
+                <Grid item container spacing={1} padding={1} md={6}>
                     <Grid item xs={12}>
                         <Typography variant={"h5"}>{name}</Typography>
                     </Grid>

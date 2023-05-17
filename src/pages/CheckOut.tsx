@@ -1,9 +1,11 @@
-import {Fragment, useContext} from "react";
+import {Fragment, useContext, useEffect, useState} from "react";
 import {CalculatorContext, ICalculatorContext} from "../provider/CalculatorProvider.tsx";
 import {Grid, Typography} from "@mui/material";
 import Panel from "../components/Panel.tsx";
 
 const CheckOut = () => {
+
+    const [pressed, setPressed] = useState<boolean>();
 
     const {
         name,
@@ -18,10 +20,19 @@ const CheckOut = () => {
         returnsCount
     } = useContext<ICalculatorContext>(CalculatorContext);
 
+    useEffect(() => {
+        const timer = pressed
+            ? setTimeout(async () => {
+                await abort();
+            }, 1300)
+            : undefined;
+        return () => clearTimeout(timer);
+    }, [abort, pressed]);
+
     return (
         <Fragment>
             <Grid container spacing={0} padding={0} justifyContent={"center"}>
-                <Grid container spacing={1} padding={1} md={6}>
+                <Grid item container spacing={1} padding={1} md={6}>
                     <Grid item xs={12}>
                         <Typography variant={"h5"}>{name}</Typography>
                     </Grid>
@@ -41,8 +52,7 @@ const CheckOut = () => {
                     <Panel handleClick={async () => await abort()} size={4} color={"#e7af20"}>
                         <Typography variant={"body1"}>Abbruch</Typography>
                     </Panel>
-                    <Panel handleClick={async () => await abort()} size={4}
-                           color={(given - total) >= 0 ? "#57ee44" : undefined}>
+                    <Panel handleMouseUp={() => setPressed(undefined)} handleMouseDown={(e: any) => setPressed(e.target)} size={4} color={(given - total) >= 0 ? "#57ee44" : undefined}>
                         <Typography variant={"body1"}>Fertig</Typography>
                     </Panel>
                 </Grid>

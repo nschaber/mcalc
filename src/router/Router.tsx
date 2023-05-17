@@ -1,4 +1,4 @@
-import {createBrowserRouter, Outlet} from "react-router-dom";
+import {createHashRouter, Outlet} from "react-router-dom";
 import App from "../app/App.tsx";
 import Error from "../app/Error.tsx";
 import Root from "../pages/Root.tsx";
@@ -6,7 +6,7 @@ import Calculator from "../pages/Calculator.tsx";
 import {CalculatorProvider} from "../provider/CalculatorProvider.tsx";
 import CheckOut from "../pages/CheckOut.tsx";
 
-export const router = createBrowserRouter([
+export const router = createHashRouter([
     {
         path: "/",
         element: <App/>,

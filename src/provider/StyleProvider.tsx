@@ -19,7 +19,7 @@ const StyleProvider = ({children}: IProps) => {
                 palette: {
                     mode: prefersDarkMode ? 'dark' : 'light',
                     primary: {
-                        main: "#1578fa"
+                        main: "#0296ff"
                     },
                     background: {
                        paper: prefersDarkMode ? "#181818" : "#f1f1f1"
@@ -27,9 +27,12 @@ const StyleProvider = ({children}: IProps) => {
                 },
                 components: {
                     MuiAppBar: {
+                        defaultProps: {
+                            color: "transparent"
+                        },
                         styleOverrides: {
                             root: {
-                                background: "linear-gradient(126deg, rgba(2,0,36,1) 0%, rgba(23,91,238,1) 0%, rgba(0,255,173,1) 100%)"
+                                backgroundColor: "#0296ff"
                             }
                         }
                     },

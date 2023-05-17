@@ -10,6 +10,30 @@
     <meta name="theme-color" content="#0296ff">
     <title>MCalc</title>
   </head>
+  <style>
+
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: black;
+      }
+    }
+
+    @media (prefers-color-scheme: light) {
+      body {
+        background-color: #ffffff;
+      }
+    }
+
+    html {
+      min-height: calc(100% + env(safe-area-inset-top));
+      padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+  </style>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/index.tsx"></script>

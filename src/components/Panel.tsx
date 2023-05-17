@@ -17,7 +17,7 @@ const Panel = ({children, size, handleClick, color, handleMouseDown, handleMouse
             <Grid item xs={size}>
                 <Card elevation={3} sx={ color ? { backgroundColor: color} : {}}>
                     <CardActionArea>
-                        <CardContent onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} onClick={handleClick}>
+                        <CardContent onTouchStart={handleMouseDown} onTouchEnd={handleMouseUp} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} onClick={handleClick}>
                             <Box textAlign={"center"} justifyContent={"center"} sx={{marginBottom: "5px", minHeight: "50px"}}>
                                 {children}
                             </Box>

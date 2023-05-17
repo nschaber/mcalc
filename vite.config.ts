@@ -6,5 +6,5 @@ import { VitePWA } from "vite-plugin-pwa";
 export default defineConfig({
   server:{port: 3000, open: true},
   build: {outDir: "build"},
-  plugins: [react(), VitePWA({ registerType: 'autoUpdate' })],
+  plugins: [react(), VitePWA({ registerType: 'autoUpdate', manifest: {theme_color: "#0296ff", background_color: "#0296ff"} })],
 })

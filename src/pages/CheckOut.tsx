@@ -2,6 +2,7 @@ import {Fragment, useContext, useEffect, useState} from "react";
 import {CalculatorContext, ICalculatorContext} from "../provider/CalculatorProvider.tsx";
 import {Grid, Typography} from "@mui/material";
 import Panel from "../components/Panel.tsx";
+import Display from "../components/Display.tsx";
 
 const CheckOut = () => {
 
@@ -31,7 +32,7 @@ const CheckOut = () => {
 
     return (
         <Fragment>
-            <Grid container spacing={0} padding={0} justifyContent={"center"}>
+            <Grid container spacing={0} padding={1} justifyContent={"center"}>
                 <Grid item container spacing={1} padding={1} md={6}>
                     <Grid item xs={12}>
                         <Typography variant={"h5"}>{name}</Typography>
@@ -52,19 +53,22 @@ const CheckOut = () => {
                     <Panel handleClick={async () => await abort()} size={4} color={"#e7af20"}>
                         <Typography variant={"body1"}>Abbruch</Typography>
                     </Panel>
-                    <Panel handleMouseUp={() => setPressed(undefined)} handleMouseDown={(e: any) => setPressed(e.target)} size={4} color={(given - total) >= 0 ? "#57ee44" : undefined}>
+                    <Panel handleMouseUp={() => setPressed(undefined)}
+                           handleMouseDown={(e: any) => setPressed(e.target)} size={4}
+                           color={(given - total) >= 0 ? "#57ee44" : undefined}>
                         <Typography variant={"body1"}>Fertig</Typography>
                     </Panel>
                 </Grid>
-                <Grid container spacing={2} margin={2} sx={{position: "fixed", bottom: 0}}>
-                    <Grid item xs={4}>
-                        <Typography variant={"h6"}>{(given - total) <= 0 ? "Bekommen" : "Geben"}</Typography>
-                        <Typography variant={"body1"}>{(given - total).toFixed(2)} EUR</Typography>
-                    </Grid>
-                    <Grid item xs={4}>
-                        <Typography
-                            variant={"h6"}>{(productsCount - returnsCount) <= 0 ? "Bekommen" : "Geben"}</Typography>
-                        <Typography variant={"body1"}>{(productsCount - returnsCount)} Märkchen</Typography>
+                <Grid container spacing={0} padding={0} justifyContent={"center"} sx={{position: "fixed", bottom: 0}}>
+                    <Grid item container spacing={1} padding={1} md={6}>
+                        <Display size={3}>
+                            <Typography variant={"body1"}>{(given - total) <= 0 ? "Bekommen" : "Geben"}</Typography>
+                            <Typography variant={"body2"}>{(given - total).toFixed(2)} EUR</Typography>
+                        </Display>
+                        <Display size={3}>
+                            <Typography variant={"body1"}>{(productsCount - returnsCount) <= 0 ? "Bekommen" : "Geben"}</Typography>
+                            <Typography variant={"body2"}>{(productsCount - returnsCount)} Märkchen</Typography>
+                        </Display>
                     </Grid>
                 </Grid>
             </Grid>

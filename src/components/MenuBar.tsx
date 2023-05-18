@@ -10,6 +10,7 @@ const MenuBar = () => {
                 <Typography
                     variant="h6"
                     component="div"
+                    color={"white"}
                     sx={{flexGrow: 1}}
                 >
                     MCalc

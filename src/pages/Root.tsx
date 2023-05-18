@@ -9,7 +9,7 @@ const Root = () => {
 
     return (
         <Fragment>
-            <Grid container spacing={0} padding={0} justifyContent={"center"}>
+            <Grid container spacing={0} padding={1} justifyContent={"center"}>
                 <Grid item container spacing={1} padding={1} md={6}>
                 <Panel handleClick={async () => await navigate("/bb")} size={12}>
                     <Typography variant={"h6"}>Bierburg</Typography>

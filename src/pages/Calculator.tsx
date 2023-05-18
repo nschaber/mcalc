@@ -4,6 +4,7 @@ import Panel from "../components/Panel.tsx";
 import {CalculatorContext, ICalculatorContext} from "../provider/CalculatorProvider.tsx";
 import {Entity} from "../model/Model.ts";
 import {NavigateFunction, useNavigate} from "react-router-dom";
+import Display from "../components/Display.tsx";
 
 const Calculator = () => {
 
@@ -22,7 +23,7 @@ const Calculator = () => {
 
     return (
         <Fragment>
-            <Grid container spacing={0} padding={0} justifyContent={"center"}>
+            <Grid container spacing={0} padding={1} justifyContent={"center"}>
                 <Grid item container spacing={1} padding={1} md={6}>
                     <Grid item xs={12}>
                         <Typography variant={"h5"}>{name}</Typography>
@@ -63,10 +64,12 @@ const Calculator = () => {
                         <Typography variant={"body1"}>Kassieren</Typography>
                     </Panel>
                 </Grid>
-                <Grid container spacing={2} margin={2} sx={{position: "fixed", bottom: 0}}>
-                    <Grid item xs={12}>
-                        <Typography variant={"h6"}>Total</Typography>
-                        <Typography variant={"body1"}>{total.toFixed(2)} EUR</Typography>
+                <Grid container spacing={0} padding={0} justifyContent={"center"} sx={{position: "fixed", bottom: 0}}>
+                    <Grid item container spacing={1} padding={1} md={6}>
+                        <Display size={3}>
+                            <Typography variant={"body1"}>Total</Typography>
+                            <Typography variant={"body2"}>{total.toFixed(2)} EUR</Typography>
+                        </Display>
                     </Grid>
                 </Grid>
             </Grid>

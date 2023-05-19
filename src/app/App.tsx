@@ -30,11 +30,16 @@ const App = () => {
             <MenuBar/>
             <Outlet/>
             <Snackbar
-                anchorOrigin={{    vertical: 'bottom',
-                    horizontal: 'center',}}
+                anchorOrigin={
+                    {
+                        vertical: 'bottom',
+                        horizontal: 'center'
+                    }
+                }
                 open={showInstallMessage}
                 onClose={() => setShowInstallMessage(false)}
-                message={<Fragment><Typography>Öffne <IosShareIcon/> und wähle <b>Zum Home-Bildschirm</b> aus zum installieren</Typography> </Fragment>}
+                message={<Fragment><Typography>Öffne <IosShareIcon/> und wähle <b>Zum Home-Bildschirm hinzufügen</b> aus
+                    zum installieren</Typography> </Fragment>}
                 action={<Fragment>
                     <IconButton
                         size="small"
@@ -42,7 +47,7 @@ const App = () => {
                         color="inherit"
                         onClick={() => setShowInstallMessage(false)}
                     >
-                        <CloseIcon fontSize="small" />
+                        <CloseIcon fontSize="small"/>
                     </IconButton>
                 </Fragment>}
             />

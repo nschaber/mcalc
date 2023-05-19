@@ -45,7 +45,7 @@ export const CalculatorProvider = ({type, name, children}: IProps) => {
         if(product) setProductsCount(productsCount + 1);
         setTotal(total + (centMode ? value * 0.1 : value));
         return total;
-    }, [centMode, options, productsCount, total])
+    }, [centMode, productsCount, total])
 
     const addGiven = useCallback((value: number, returns: boolean) => {
         if(returns) setReturnsCount(returnsCount + 1);
@@ -58,17 +58,14 @@ export const CalculatorProvider = ({type, name, children}: IProps) => {
         setGiven(0.0);
         setProductsCount(0);
         setReturnsCount(0);
+        setDirectMode(false);
         setCentMode(false);
     }, [])
 
     const abort = useCallback(async () => {
-        setTotal(0.0);
-        setGiven(0.0);
-        setProductsCount(0);
-        setReturnsCount(0);
-        setCentMode(false);
+        clear();
         await navigate(`/${type}`)
-    }, [navigate, type])
+    }, [clear, navigate, type])
 
     return (<CalculatorContext.Provider
         value={{

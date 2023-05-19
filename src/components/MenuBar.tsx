@@ -1,6 +1,7 @@
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import {Link} from "react-router-dom";
 
 const MenuBar = () => {
 
@@ -8,12 +9,13 @@ const MenuBar = () => {
         <AppBar position={"static"}>
             <Toolbar>
                 <Typography
-                    variant="h6"
-                    component="div"
+                    variant="h5"
                     color={"white"}
                     sx={{flexGrow: 1}}
                 >
-                    MCalc
+                    <Link to={"/"}>
+                        MCalc
+                    </Link>
                 </Typography>
             </Toolbar>
         </AppBar>

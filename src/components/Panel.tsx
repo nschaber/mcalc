@@ -8,17 +8,19 @@ interface IProps {
     handleMouseDown?: (e: any) => void;
     handleMouseUp?: () => void;
     color?: string;
+    disabled?: boolean;
+    height?: string;
 }
 
-const Panel = ({children, size, handleClick, color, handleMouseDown, handleMouseUp}: IProps) => {
+const Panel = ({children, size, handleClick, color, handleMouseDown, handleMouseUp, disabled, height}: IProps) => {
 
     return (
         <Fragment>
-            <Grid item xs={size}>
+            <Grid margin={0} padding={0} item xs={size}>
                 <Card elevation={3} sx={ color ? { backgroundColor: color} : {}}>
-                    <CardActionArea>
-                        <CardContent onTouchStart={handleMouseDown} onTouchEnd={handleMouseUp} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} onClick={handleClick}>
-                            <Box textAlign={"center"} justifyContent={"center"} sx={{marginBottom: "5px", minHeight: "50px"}}>
+                    <CardActionArea disabled={disabled}>
+                        <CardContent sx={{margin: "0px", paddingLeft: "0px", paddingRight: "0px"}} onTouchStart={handleMouseDown} onTouchEnd={handleMouseUp} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} onClick={handleClick}>
+                            <Box textAlign={"center"} justifyContent={"center"} sx={{ maxHeight: height, minHeight: height}}>
                                 {children}
                             </Box>
                         </CardContent>

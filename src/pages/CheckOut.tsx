@@ -38,34 +38,36 @@ const CheckOut = () => {
                         <Typography variant={"h5"}>{name}</Typography>
                     </Grid>
                     {[1, 2, 5, 10, 20, 50, 100, 200].map((key: number) => {
-                        return <Panel key={key} handleClick={async () => addGiven(key, false)} size={4}>
+                        return <Panel height={"40px"} key={key} handleClick={async () => addGiven(key, false)} size={4}>
                             <Typography variant={"body1"}>{key}</Typography>
                         </Panel>
                     })}
-                    <Panel handleClick={async () => addGiven(options.returns, true)} size={4}>
+                    <Panel height={"40px"} handleClick={async () => addGiven(options.returns, true)} size={4}>
                         <Typography variant={"body1"}>Pfand</Typography>
                         <Typography variant={"body2"} color={"grey"}>{options.returns} EUR</Typography>
                     </Panel>
-                    <Panel handleClick={async () => setCentMode(!centMode)} size={4}
+                    <Panel height={"40px"} handleClick={async () => setCentMode(!centMode)} size={4}
                            color={centMode ? "#e74646" : undefined}>
                         <Typography variant={"body1"}>Cents</Typography>
                     </Panel>
-                    <Panel handleClick={async () => await abort()} size={4} color={"#e7af20"}>
+                    <Panel height={"40px"} handleClick={async () => await abort()} size={4} color={"#e74646"}>
                         <Typography variant={"body1"}>Abbruch</Typography>
                     </Panel>
-                    <Panel handleMouseUp={() => setPressed(undefined)}
+                    <Panel height={"40px"} handleMouseUp={() => setPressed(undefined)}
                            handleMouseDown={(e: any) => setPressed(e.target)} size={4}
-                           color={(given - total) >= 0 ? "#57ee44" : undefined}>
+                           color={(given - total) >= 0 ? "#78d372" : undefined}
+                           disabled={(given - total) < 0}
+                    >
                         <Typography variant={"body1"}>Fertig</Typography>
                     </Panel>
                 </Grid>
-                <Grid container spacing={0} padding={0} justifyContent={"center"} sx={{position: "fixed", bottom: 0}}>
-                    <Grid item container spacing={1} padding={1} md={6}>
-                        <Display size={3}>
+                <Grid container spacing={0} padding={1} justifyContent={"center"} sx={{position: "fixed", bottom: 0}}>
+                    <Grid item container spacing={1} padding={3} md={6}>
+                        <Display size={5} disabled={true}>
                             <Typography variant={"body1"}>{(given - total) <= 0 ? "Bekommen" : "Geben"}</Typography>
                             <Typography variant={"body2"}>{(given - total).toFixed(2)} EUR</Typography>
                         </Display>
-                        <Display size={3}>
+                        <Display size={5} disabled={true}>
                             <Typography variant={"body1"}>{(productsCount - returnsCount) <= 0 ? "Bekommen" : "Geben"}</Typography>
                             <Typography variant={"body2"}>{(productsCount - returnsCount)} Märkchen</Typography>
                         </Display>

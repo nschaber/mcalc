@@ -4,7 +4,7 @@ import {Box, Card, CardActionArea, CardContent, Grid} from "@mui/material";
 interface IProps {
     children: Array<ReactElement> | ReactElement;
     size: number;
-    handleClick?: () => void;
+    handleClick?: (e: any) => void;
     handleMouseDown?: (e: any) => void;
     handleMouseUp?: () => void;
     color?: string;
@@ -17,7 +17,7 @@ const Panel = ({children, size, handleClick, color, handleMouseDown, handleMouse
     return (
         <Fragment>
             <Grid margin={0} padding={0} item xs={size}>
-                <Card elevation={3} sx={ color ? { backgroundColor: color} : {}}>
+                <Card elevation={3} sx={ disabled ? { backgroundColor: "grey" } : (color ? { backgroundColor: color} : {})}>
                     <CardActionArea disabled={disabled}>
                         <CardContent sx={{margin: "0px", paddingLeft: "0px", paddingRight: "0px"}} onTouchStart={handleMouseDown} onTouchEnd={handleMouseUp} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} onClick={handleClick}>
                             <Box textAlign={"center"} justifyContent={"center"} sx={{ maxHeight: height, minHeight: height}}>

@@ -21,6 +21,34 @@
       "value": {
         "default": 2.5
       }
+    },
+    {
+      "key": "r5",
+      "name": "Radler 0.5",
+      "value": {
+        "default": 2.5
+      }
+    },
+    {
+      "key": "r3",
+      "name": "Radler 0.3",
+      "value": {
+        "default": 1.5
+      }
+    },
+    {
+      "key": "sc",
+      "name": "Schöffer",
+      "value": {
+        "default": 2.5
+      }
+    },
+    {
+      "key": "al",
+      "name": "Alkfrei",
+      "value": {
+        "default": 2.5
+      }
     }
   ]
 }

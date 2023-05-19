@@ -15,9 +15,10 @@ export interface ICalculatorContext {
     setDirectMode: (value: boolean) => void;
     addValue: (value: number, product: boolean) => number;
     addGiven: (value: number, returns: boolean) => number;
-    clear: () => void;
+    clear: () => Promise<void>;
     abort: () => Promise<void>;
     productsCount: number;
+    finish: () => Promise<void>;
     returnsCount: number;
     options: { returns: number, products: Array<Entity>};
 }
@@ -39,21 +40,28 @@ export const CalculatorProvider = ({type, name, children}: IProps) => {
     const [returnsCount, setReturnsCount] = useState<number>(0);
     const [productsCount, setProductsCount] = useState<number>(0);
     const [options] = useState<{ returns: number, products: Array<Entity>}>(type == "bb" ? bierburg : megabar);
-    const navigate: NavigateFunction = useNavigate()
+    const navigate: NavigateFunction = useNavigate();
 
     const addValue = useCallback((value: number, product: boolean) => {
         if(product) setProductsCount(productsCount + 1);
-        setTotal(total + (centMode ? value * 0.1 : value));
+        setTotal(total + value);
         return total;
-    }, [centMode, productsCount, total])
+    }, [productsCount, total])
 
     const addGiven = useCallback((value: number, returns: boolean) => {
         if(returns) setReturnsCount(returnsCount + 1);
-        setGiven(given + (centMode ? value * 0.1 : value));
+        setGiven(given + value);
         return given;
-    }, [centMode, given, returnsCount])
+    }, [given, returnsCount])
 
-    const clear = useCallback(() => {
+    const save = useCallback(async () => {
+        const value = localStorage.getItem("mcalc-sales") || "[]";
+        const sales: Array<object> = JSON.parse(value);
+        sales.push({ time: new Date(), total: total, given: given});
+        localStorage.setItem("mcalc-sales", JSON.stringify(sales));
+    }, [given, total])
+
+    const clear = useCallback(async () => {
         setTotal(0.0);
         setGiven(0.0);
         setProductsCount(0);
@@ -62,9 +70,15 @@ export const CalculatorProvider = ({type, name, children}: IProps) => {
         setCentMode(false);
     }, [])
 
+    const finish = useCallback(async () => {
+        await save();
+        await clear();
+        await navigate(`/${type}`);
+    }, [clear, navigate, save, type])
+
     const abort = useCallback(async () => {
-        clear();
-        await navigate(`/${type}`)
+        await clear();
+        await navigate(`/${type}`);
     }, [clear, navigate, type])
 
     return (<CalculatorContext.Provider
@@ -73,6 +87,7 @@ export const CalculatorProvider = ({type, name, children}: IProps) => {
             name,
             total,
             given,
+            finish,
             directMode,
             setDirectMode,
             centMode,

@@ -6,7 +6,8 @@ import Display from "../components/Display.tsx";
 
 const CheckOut = () => {
 
-    const [pressed, setPressed] = useState<boolean>();
+    const [finishPressed, setFinishPressed] = useState<boolean>();
+    const [abortPressed, setAbortPressed] = useState<boolean>();
     const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 
     const open = Boolean(anchorEl);
@@ -26,15 +27,31 @@ const CheckOut = () => {
     } = useContext<ICalculatorContext>(CalculatorContext);
 
     useEffect(() => {
-        const timer = pressed
+        const timer = finishPressed
             ? setTimeout(async () => {
                 await finish();
             }, 500)
             : undefined;
         return () => clearTimeout(timer);
-    }, [finish, pressed]);
+    }, [finish, finishPressed]);
 
-    const handleClick = (event: any) => {
+    useEffect(() => {
+        const timer = abortPressed
+            ? setTimeout(async () => {
+                await abort();
+            }, 500)
+            : undefined;
+        return () => clearTimeout(timer);
+    }, [abort, abortPressed]);
+
+    const handleClickAbort = (event: any) => {
+        setAnchorEl(event.currentTarget);
+        setTimeout(async () => {
+            setAnchorEl(null);
+        }, 500)
+    };
+
+    const handleClickFinish = (event: any) => {
         setAnchorEl(event.currentTarget);
         setTimeout(async () => {
             setAnchorEl(null);
@@ -78,8 +95,23 @@ const CheckOut = () => {
                            color={centMode ? "#e74646" : undefined}>
                         <Typography variant={"body1"}>Cents</Typography>
                     </Panel>
-                    <Panel height={"40px"} handleClick={async () => await abort()} size={4} color={"#e74646"}>
+                    <Panel height={"40px"}
+                           handleClick={(e: any) => handleClickAbort(e)}
+                           handleMouseUp={() => setAbortPressed(undefined)}
+                           handleMouseDown={(e: any) => setAbortPressed(e.target)}
+                           size={4}
+                           color={"#e74646"}
+                    >
                         <Typography variant={"body1"}>Abbruch</Typography>
+                    </Panel>
+                    <Panel height={"40px"}
+                           handleClick={(e: any) => handleClickFinish(e)}
+                           handleMouseUp={() => setFinishPressed(undefined)}
+                           handleMouseDown={(e: any) => setFinishPressed(e.target)} size={4}
+                           color={(given - total) >= 0 ? "#78d372" : undefined}
+                           disabled={(given - total) < 0}
+                    >
+                        <Typography variant={"body1"}>Fertig</Typography>
                     </Panel>
                     <Popover
                         open={open}
@@ -92,25 +124,16 @@ const CheckOut = () => {
                     >
                         <Typography>Länger gedrückt halten!</Typography>
                     </Popover>
-                    <Panel height={"40px"}
-                           handleClick={(e: any) => handleClick(e)}
-                           handleMouseUp={() => setPressed(undefined)}
-                           handleMouseDown={(e: any) => setPressed(e.target)} size={4}
-                           color={(given - total) >= 0 ? "#78d372" : undefined}
-                           disabled={(given - total) < 0}
-                    >
-                        <Typography variant={"body1"}>Fertig</Typography>
-                    </Panel>
                 </Grid>
                 <Grid container spacing={0} padding={1} justifyContent={"center"} sx={{position: "fixed", bottom: 0}}>
                     <Grid item container spacing={1} padding={3} md={6}>
                         <Display size={5} disabled={true}>
-                            <Typography variant={"body1"}>{(given - total) <= 0 ? "Bekommen" : "Geben"}</Typography>
-                            <Typography variant={"body2"}>{(given - total).toFixed(2)} EUR</Typography>
+                            <Typography variant={"body1"} color={(given - total) < 0 ? "red": "green"}>{(given - total) <= 0 ? "Bekommen" : "Geben"}</Typography>
+                            <Typography variant={"body2"} color={(given - total) < 0 ? "red": "green"}>{(given - total).toFixed(2)} EUR</Typography>
                         </Display>
                         <Display size={5} disabled={true}>
-                            <Typography variant={"body1"}>{(productsCount - returnsCount) <= 0 ? "Bekommen" : "Geben"}</Typography>
-                            <Typography variant={"body2"}>{(productsCount - returnsCount)} Märkchen</Typography>
+                            <Typography variant={"body1"} color={(productsCount - returnsCount) < 0 ? "red": "green"}>{(productsCount - returnsCount) <= 0 ? "Bekommen" : "Geben"}</Typography>
+                            <Typography variant={"body2"} color={(productsCount - returnsCount) < 0 ? "red": "green"}>{(productsCount - returnsCount)} Märkchen</Typography>
                         </Display>
                     </Grid>
                 </Grid>

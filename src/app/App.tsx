@@ -9,12 +9,12 @@ const App = () => {
 
     const [splash, setSplash] = useState<boolean>(true);
     const [showInstallMessage, setShowInstallMessage] = useState<boolean>(false);
-
     const theme = useTheme()
 
+    const isIos = () => /iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase())
+    const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator.standalone);
+
     useEffect(() => {
-        const isIos = () => /iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase())
-        const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator.standalone);
         if (isIos() && !isInStandaloneMode()) {
             setShowInstallMessage(true);
         }
@@ -26,7 +26,6 @@ const App = () => {
 
     return (
         <Fragment>
-
             <MenuBar/>
             <Outlet/>
             <Snackbar
@@ -38,7 +37,7 @@ const App = () => {
                 }
                 open={showInstallMessage}
                 onClose={() => setShowInstallMessage(false)}
-                message={<Fragment><Typography>Öffne <IosShareIcon/> und wähle <b>Zum Home-Bildschirm hinzufügen</b> aus
+                message={<Fragment><Typography>Öffne <IosShareIcon/> und wähle <b>Zum Home-Bildschirm</b> aus
                     zum installieren</Typography> </Fragment>}
                 action={<Fragment>
                     <IconButton

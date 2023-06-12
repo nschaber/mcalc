@@ -9,6 +9,9 @@ export default defineConfig({
     plugins: [react(), VitePWA({
         registerType: 'autoUpdate',
         manifest: {
+            name: 'MCalc',
+            short_name: 'MCalc',
+            description: 'MCalc',
             theme_color: "#0296ff",
             background_color: "#0296ff",
             icons: [

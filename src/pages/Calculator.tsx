@@ -64,7 +64,7 @@ const Calculator = () => {
                                     margin={0}
                                     color={"grey"}
                                 >
-                                    {value.value.default} EUR
+                                    {value.value.default.toFixed(2)} EUR
                                 </Typography>
                             </Panel>}/>
                     }

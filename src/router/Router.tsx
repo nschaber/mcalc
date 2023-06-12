@@ -5,6 +5,7 @@ import Root from "../pages/Root.tsx";
 import Calculator from "../pages/Calculator.tsx";
 import {CalculatorProvider} from "../provider/CalculatorProvider.tsx";
 import CheckOut from "../pages/CheckOut.tsx";
+import History from "../pages/History.tsx";
 
 export const router = createHashRouter([
     {
@@ -15,6 +16,10 @@ export const router = createHashRouter([
             {
                 index: true,
                 element: <Root />,
+            },
+            {
+                path: "history",
+                element: <History />,
             },
             {
                 path: "mb",

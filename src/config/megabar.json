@@ -1,20 +1,12 @@
 {
-  "returns": 0,
   "products": [
     {
-      "key": "vw",
-      "name": "Vodka W",
-      "returns": false,
+      "key": "vl",
+      "name": "Vodka L",
+      "returns": true,
       "value": {
-        "default": 7
-      }
-    },
-    {
-      "key": "gt",
-      "name": "Gin T",
-      "returns": false,
-      "value": {
-        "default": 7
+        "default": 5,
+        "return": 3
       }
     }
   ]

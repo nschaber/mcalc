@@ -1,36 +1,57 @@
 {
-  "returns": 2,
   "products": [
     {
-      "key": "p5",
+      "key": "p4",
       "name": "Pils 0.4",
       "returns": true,
       "value": {
-        "default": 3.5
+        "default": 3.5,
+        "return": 2
       }
     },
     {
-      "key": "w5",
+      "key": "r4",
+      "name": "Radler 0.4",
+      "returns": true,
+      "value": {
+        "default": 3.5,
+        "return": 2
+      }
+    },
+    {
+      "key": "w3",
       "name": "Weizen 0.3",
       "returns": true,
       "value": {
-        "default": 2.5
+        "default": 3,
+        "return": 2
+      }
+    },
+    {
+      "key": "wr3",
+      "name": "Weizen-Radler 0.3",
+      "returns": true,
+      "value": {
+        "default": 3,
+        "return": 2
+      }
+    },
+    {
+      "key": "gr",
+      "name": "Grape / Active",
+      "returns": true,
+      "value": {
+        "default": 3,
+        "return": 2
       }
     },
     {
       "key": "sc",
-      "name": "Schöffer",
+      "name": "Schöfferhofer",
       "returns": true,
       "value": {
-        "default": 2.5
-      }
-    },
-    {
-      "key": "al",
-      "name": "Alkfrei",
-      "returns": true,
-      "value": {
-        "default": 2.5
+        "default": 3,
+        "return": 2
       }
     }
   ]

@@ -11,8 +11,6 @@ export interface ICalculatorContext {
     given: number;
     centMode: boolean;
     setCentMode: (value: boolean) => void;
-    directMode: boolean;
-    setDirectMode: (value: boolean) => void;
     addValue: (value: number, product: boolean) => number;
     addGiven: (value: number, returns: boolean) => number;
     clear: () => Promise<void>;
@@ -20,7 +18,7 @@ export interface ICalculatorContext {
     productsCount: number;
     finish: () => Promise<void>;
     returnsCount: number;
-    options: { returns: number, products: Array<Entity>};
+    options: {products: Array<Entity>};
 }
 
 interface IProps {
@@ -33,13 +31,12 @@ export const CalculatorContext: Context<ICalculatorContext> = createContext({} a
 
 export const CalculatorProvider = ({type, name, children}: IProps) => {
 
-    const [directMode, setDirectMode] = useState<boolean>(false);
     const [centMode, setCentMode] = useState<boolean>(false);
     const [total, setTotal] = useState<number>(0.0);
     const [given, setGiven] = useState<number>(0.0);
     const [returnsCount, setReturnsCount] = useState<number>(0);
     const [productsCount, setProductsCount] = useState<number>(0);
-    const [options] = useState<{ returns: number, products: Array<Entity>}>(type == "bb" ? bierburg : megabar);
+    const [options] = useState<{products: Array<Entity>}>(type == "bb" ? bierburg : megabar);
     const navigate: NavigateFunction = useNavigate();
 
     const addValue = useCallback((value: number, product: boolean) => {
@@ -66,19 +63,18 @@ export const CalculatorProvider = ({type, name, children}: IProps) => {
         setGiven(0.0);
         setProductsCount(0);
         setReturnsCount(0);
-        setDirectMode(false);
         setCentMode(false);
     }, [])
 
     const finish = useCallback(async () => {
         await save();
         await clear();
-        await navigate(`/${type}`);
+        navigate(`/${type}`);
     }, [clear, navigate, save, type])
 
     const abort = useCallback(async () => {
         await clear();
-        await navigate(`/${type}`);
+        navigate(`/${type}`);
     }, [clear, navigate, type])
 
     return (<CalculatorContext.Provider
@@ -88,8 +84,6 @@ export const CalculatorProvider = ({type, name, children}: IProps) => {
             total,
             given,
             finish,
-            directMode,
-            setDirectMode,
             centMode,
             setCentMode,
             addValue,

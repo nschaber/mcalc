@@ -17,7 +17,6 @@ const CheckOut = () => {
         total,
         given,
         addGiven,
-        options,
         centMode,
         finish,
         setCentMode,
@@ -86,10 +85,13 @@ const CheckOut = () => {
                             })}
                         </Fragment>
                     }
-
-                    <Panel height={"40px"} handleClick={async () => addGiven(options.returns, true)} size={4}>
-                        <Typography variant={"body1"}>Pfand</Typography>
-                        <Typography variant={"body2"} color={"grey"}>{options.returns} EUR</Typography>
+                    <Panel height={"40px"} handleClick={async () => addGiven(2, true)} size={4}>
+                        <Typography variant={"body1"}>Pfand Glas</Typography>
+                        <Typography variant={"body2"} color={"grey"}>2 EUR</Typography>
+                    </Panel>
+                    <Panel height={"40px"} handleClick={async () => addGiven(2, true)} size={4}>
+                        <Typography variant={"body1"}>Pfand Becher</Typography>
+                        <Typography variant={"body2"} color={"grey"}>3 EUR</Typography>
                     </Panel>
                     <Panel height={"40px"} handleClick={async () => setCentMode(!centMode)} size={4}
                            color={centMode ? "#e74646" : undefined}>

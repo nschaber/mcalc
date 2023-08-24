@@ -19,6 +19,14 @@ const Calculator = () => {
     } = useContext<ICalculatorContext>(CalculatorContext);
     const navigate: NavigateFunction = useNavigate()
 
+    const yearsAgo = (years: number) => {
+        const today = new Date()
+        const dd = String(today.getDate()).padStart(2, "0")
+        const mm = String(today.getMonth() + 1).padStart(2, "0")
+        const yyyy = today.getFullYear() - years;
+        return `${dd}.${mm}.${yyyy}`;
+    }
+
     return (
         <Fragment>
             <Grid container spacing={0} padding={1} justifyContent={"center"}>
@@ -65,6 +73,11 @@ const Calculator = () => {
                             <Typography variant={"body1"}>Total</Typography>
                             <Typography variant={"body2"}>{total.toFixed(2)} EUR</Typography>
                             <Typography variant={"body2"}>{productsCount} Artikel</Typography>
+                        </Display>
+                        <Display size={7} disabled={true}>
+                            <Typography variant={"body1"}>Stichtage</Typography>
+                            <Typography variant={"body2"}>16 Jahre: { yearsAgo(16) } </Typography>
+                            <Typography variant={"body2"}>18 Jahre: { yearsAgo(18) } </Typography>
                         </Display>
                     </Grid>
                 </Grid>

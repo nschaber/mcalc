@@ -2,6 +2,7 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import {Link} from "react-router-dom";
+import {Box} from "@mui/material";
 
 const MenuBar = () => {
 
@@ -20,6 +21,7 @@ const MenuBar = () => {
                         </Typography>
                     </div>
                 </Link>
+                <Box flex={1} flexGrow={1}></Box>
             </Toolbar>
         </AppBar>
     )

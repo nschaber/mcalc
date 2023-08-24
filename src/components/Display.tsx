@@ -16,7 +16,7 @@ const Display = ({children, size, color, disabled}: IProps) => {
                 <Card elevation={3} sx={ color ? { backgroundColor: color} : {}}>
                     <CardActionArea disabled={disabled}>
                         <CardContent>
-                            <Box sx={{maxHeight: "55px"}}>
+                            <Box sx={{maxHeight: "55px", minHeight: "55px"}}>
                                 {children}
                             </Box>
                         </CardContent>

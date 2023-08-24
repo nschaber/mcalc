@@ -3,42 +3,18 @@
   "products": [
     {
       "key": "p5",
-      "name": "Pils 0.5",
+      "name": "Pils 0.4",
       "returns": true,
       "value": {
-        "default": 2.5
-      }
-    },
-    {
-      "key": "p3",
-      "name": "Pils 0.3",
-      "returns": true,
-      "value": {
-        "default": 1.5
+        "default": 3.5
       }
     },
     {
       "key": "w5",
-      "name": "Weizen 0.5",
+      "name": "Weizen 0.3",
       "returns": true,
       "value": {
         "default": 2.5
-      }
-    },
-    {
-      "key": "r5",
-      "name": "Radler 0.5",
-      "returns": true,
-      "value": {
-        "default": 2.5
-      }
-    },
-    {
-      "key": "r3",
-      "name": "Radler 0.3",
-      "returns": true,
-      "value": {
-        "default": 1.5
       }
     },
     {

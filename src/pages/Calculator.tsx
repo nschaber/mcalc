@@ -19,6 +19,7 @@ const Calculator = () => {
         clear,
         directMode,
         setDirectMode,
+        productsCount,
         options
     } = useContext<ICalculatorContext>(CalculatorContext);
     const navigate: NavigateFunction = useNavigate()
@@ -87,6 +88,7 @@ const Calculator = () => {
                         <Display size={5} disabled={true}>
                             <Typography variant={"body1"}>Total</Typography>
                             <Typography variant={"body2"}>{total.toFixed(2)} EUR</Typography>
+                            <Typography variant={"body2"}>{productsCount} Artikel</Typography>
                         </Display>
                     </Grid>
                 </Grid>

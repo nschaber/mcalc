@@ -43,6 +43,13 @@ const StyleProvider = ({children}: IProps) => {
                                 minHeight: "50px"
                             }
                         }
+                    },
+                    MuiCardContent: {
+                        styleOverrides: {
+                            root: {
+
+                            }
+                        }
                     }
                 }
             }),

@@ -23,7 +23,7 @@
       "name": "Joster Shot",
       "returns": false,
       "value": {
-        "default": 5,
+        "default": 2,
         "return": 0
       }
     },
@@ -32,7 +32,7 @@
       "name": "Jägermeister Shot",
       "returns": false,
       "value": {
-        "default": 5,
+        "default": 3,
         "return": 0
       }
     },

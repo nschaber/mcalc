@@ -89,7 +89,7 @@ const CheckOut = () => {
                         <Typography variant={"body1"}>Pfand Glas</Typography>
                         <Typography variant={"body2"} color={"grey"}>2 EUR</Typography>
                     </Panel>
-                    <Panel height={"40px"} handleClick={async () => addGiven(2, true)} size={4}>
+                    <Panel height={"40px"} handleClick={async () => addGiven(3, true)} size={4}>
                         <Typography variant={"body1"}>Pfand Becher</Typography>
                         <Typography variant={"body2"} color={"grey"}>3 EUR</Typography>
                     </Panel>

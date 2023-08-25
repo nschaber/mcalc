@@ -1,11 +1,92 @@
 {
   "products": [
     {
-      "key": "vl",
-      "name": "Vodka L",
+      "key": "c3",
+      "name": "Cocktail 0.3",
       "returns": true,
       "value": {
         "default": 5,
+        "return": 3
+      }
+    },
+    {
+      "key": "ws3",
+      "name": "Weinschorle 0.3",
+      "returns": true,
+      "value": {
+        "default": 3,
+        "return": 3
+      }
+    },
+    {
+      "key": "jos",
+      "name": "Joster Shot",
+      "returns": false,
+      "value": {
+        "default": 5,
+        "return": 0
+      }
+    },
+    {
+      "key": "jms",
+      "name": "Jägermeister Shot",
+      "returns": false,
+      "value": {
+        "default": 5,
+        "return": 0
+      }
+    },
+    {
+      "key": "cs3",
+      "name": "Cola 0.3",
+      "returns": true,
+      "value": {
+        "default": 2,
+        "return": 3
+      }
+    },
+    {
+      "key": "fs3",
+      "name": "Fanta 0.3",
+      "returns": true,
+      "value": {
+        "default": 2,
+        "return": 3
+      }
+    },
+    {
+      "key": "ms3",
+      "name": "Mezzo 0.3",
+      "returns": true,
+      "value": {
+        "default": 2,
+        "return": 3
+      }
+    },
+    {
+      "key": "w75",
+      "name": "Wasser 0.75",
+      "returns": true,
+      "value": {
+        "default": 4,
+        "return": 2
+      }
+    },
+    {
+      "key": "z75",
+      "name": "Zitronensprudel 0.75",
+      "returns": true,
+      "value": {
+        "default": 4,
+        "return": 2
+      }
+    },
+    {
+      "key": "as3",
+      "name": "Apfelschorle 0.3",
+      "returns": true,
+      "value": {
+        "default": 2,
         "return": 3
       }
     }
